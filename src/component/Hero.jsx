@@ -20,35 +20,35 @@ const Hero = () => {
         },
       });
 
-      // LEFT
-      tl.fromTo(
-        ".img1",
-        { x: -300, opacity: 0 },
-        { x: 0, opacity: 1, ease: "power3.out" },
-        0
-      );
+     // LEFT (from top-left)
+tl.fromTo(
+  ".img1",
+  { x: -300, y: -150, opacity: 0 },
+  { x: 0, y: 0, opacity: 1, ease: "power3.out" },
+  0
+);
 
-      tl.fromTo(
-        ".img2",
-        { x: -400, opacity: 0 },
-        { x: 0, opacity: 1, ease: "power3.out" },
-        0.1
-      );
+tl.fromTo(
+  ".img2",
+  { x: -400, y: 150, opacity: 0 },
+  { x: 0, y: 0, opacity: 1, ease: "power3.out" },
+  0.1
+);
 
-      // RIGHT
-      tl.fromTo(
-        ".img4",
-        { x: 300, opacity: 0 },
-        { x: 0, opacity: 1, ease: "power3.out" },
-        0
-      );
+// RIGHT (from top-right / bottom-right)
+tl.fromTo(
+  ".img4",
+  { x: 300, y: 150, opacity: 0 },
+  { x: 0, y: 0, opacity: 1, ease: "power3.out" },
+  0
+);
 
-      tl.fromTo(
-        ".img5",
-        { x: 400, opacity: 0 },
-        { x: 0, opacity: 1, ease: "power3.out" },
-        0.1
-      );
+tl.fromTo(
+  ".img5",
+  { x: 400, y: -150, opacity: 0 },
+  { x: 0, y: 0, opacity: 1, ease: "power3.out" },
+  0.1
+);
     }, heroRef);
 
     return () => ctx.revert();
