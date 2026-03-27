@@ -9,29 +9,40 @@ const Hero = () => {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
+      
+      // 🔥 Set initial center position (NO Tailwind transform)
+      gsap.set(".center-img", {
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        xPercent: -50,
+        yPercent: -50,
+        zIndex: 0,
+      });
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: heroRef.current,
           start: "top top",
-          end: "+=100%",
+          end: "+=120%",
           scrub: true,
           pin: true,
           markers: true,
         },
       });
 
-      // 🔥 CENTER IMAGE (big → normal, behind everything)
+      // 🔥 CENTER IMAGE (FULL SCREEN → CENTER CARD)
       tl.fromTo(
         ".center-img",
         {
-          scale: 1.8,
-          opacity: 0,
-          filter: "blur(20px)",
+          width: "100vw",
+          height: "100vh",
+          borderRadius: "0px",
         },
         {
-          scale: 1,
-          opacity: 1,
-          filter: "blur(0px)",
+          width: "380px",
+          height: "480px",
+          borderRadius: "20px",
           ease: "power3.out",
         },
         0
@@ -42,14 +53,14 @@ const Hero = () => {
         ".img1",
         { x: -300, y: -150, opacity: 0 },
         { x: 0, y: 0, opacity: 1, ease: "power3.out" },
-        0
+        0.2
       );
 
       tl.fromTo(
         ".img2",
         { x: -400, y: 150, opacity: 0 },
         { x: 0, y: 0, opacity: 1, ease: "power3.out" },
-        0.1
+        0.3
       );
 
       // 🔥 RIGHT (diagonal)
@@ -57,15 +68,16 @@ const Hero = () => {
         ".img4",
         { x: 300, y: 150, opacity: 0 },
         { x: 0, y: 0, opacity: 1, ease: "power3.out" },
-        0
+        0.2
       );
 
       tl.fromTo(
         ".img5",
         { x: 400, y: -150, opacity: 0 },
         { x: 0, y: 0, opacity: 1, ease: "power3.out" },
-        0.1
+        0.3
       );
+
     }, heroRef);
 
     return () => ctx.revert();
@@ -75,9 +87,17 @@ const Hero = () => {
     <div
       ref={heroRef}
       id="hero"
-      className="bg-white overflow-hidden h-screen"
+      className="bg-white overflow-hidden h-screen relative"
     >
-      <div className="grid grid-cols-3 gap-0 mt-15">
+
+      {/* 🔥 CENTER IMAGE */}
+      <img
+        className="center-img object-cover"
+        src="./image3.jpg"
+        alt=""
+      />
+
+      <div className="grid grid-cols-3 gap-0 mt-15 relative z-10">
 
         {/* LEFT */}
         <div className="flex flex-col items-center gap-4">
@@ -93,19 +113,13 @@ const Hero = () => {
           />
         </div>
 
-        {/* CENTER */}
-        <div className="flex justify-center mt-10">
-          <img
-            className="center-img h-[480px] rounded-2xl relative z-0"
-            src="./image3.jpg"
-            alt=""
-          />
-        </div>
+        {/* CENTER EMPTY SPACE */}
+        <div></div>
 
         {/* RIGHT */}
         <div className="flex flex-col items-start gap-4 -translate-x-80">
           <img
-            className="img5 ml-[260px] h-[180px] rounded-xl relative z-10"
+            className="img5 ml-[300px] h-[180px] rounded-xl relative z-10"
             src="./image5.jpg"
             alt=""
           />
