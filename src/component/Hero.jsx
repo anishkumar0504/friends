@@ -36,7 +36,7 @@ const Hero = () => {
       // center image shrinks
       tl.fromTo(
         ".center-img",
-        { width: "72vw", height: "68vh", borderRadius: "20px" },
+        { width: "80vw", height: "80vh", borderRadius: "20px" },
         { width: "380px", height: "460px", borderRadius: "20px", ease: "power3.out" },
         0
       );
@@ -129,9 +129,9 @@ const Hero = () => {
             opacity: 0,
           }}
         >
-          <h1 className="text-7xl font-bold tracking-tight text-gray-900">
-            Discover Your World
-          </h1>
+            <h1 className="text-7xl font-bold tracking-tight bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 bg-clip-text text-transparent">
+  FRIENDS
+</h1>
         </div>
 
         {/* Side images */}
@@ -153,7 +153,7 @@ const Hero = () => {
 
         {/* Title */}
         <h1 className="text-4xl font-bold text-gray-900 text-center px-6 mb-8 leading-tight">
-          Discover<br />Your World
+          FRIENDS
         </h1>
 
         {/* Swipeable cards */}
